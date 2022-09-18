@@ -1,0 +1,16 @@
+.track {
+    display: inline-block;
+}
+
+.beat {
+    display: inline-block;
+    width: 30px;
+    height: 60px;
+    background-color: gray;
+    color: red;
+    border: 1px solid blue;
+}
+
+.active {
+    background-color: cyan;
+}
