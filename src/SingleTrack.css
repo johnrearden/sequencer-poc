@@ -1,11 +1,12 @@
 .track {
     display: inline-block;
+    margin-top: 20px;
 }
 
 .beat {
     display: inline-block;
-    width: 30px;
-    height: 60px;
+    width: 20px;
+    height: 40px;
     background-color: gray;
     color: red;
     border: 1px solid blue;
@@ -13,4 +14,9 @@
 
 .active {
     background-color: cyan;
+}
+
+.instrument-name {
+    display: inline-block;
+    width: 150px;
 }

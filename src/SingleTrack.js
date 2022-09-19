@@ -2,10 +2,9 @@ import React, {useState} from 'react';
 import {DrumLoop} from './drum_loop';
 import './SingleTrack.css'
 
-const SingleTrack = (props) => {
-    const array = Array(DrumLoop.length).fill(false);
-    for (let note of DrumLoop.drums[0]['kick_hard']) {
-        console.log(note);
+export const SingleTrack = (props) => {
+    const array = Array(props.loopLength).fill(false);
+    for (let note of props.noteList) {
         array[note] = true;
     }
     const [beats, setBeats] = useState(array);
@@ -39,6 +38,9 @@ const SingleTrack = (props) => {
 
     return (
         <React.Fragment>
+            <div className='instrument-name'>
+                <h3>{props.instrument}</h3>
+            </div>
             <div className='track'>
                 {beatDivs}
             </div>
