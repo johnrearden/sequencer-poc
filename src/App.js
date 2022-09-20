@@ -1,15 +1,23 @@
+import React, {useState} from 'react';
 import './App.css';
-import {LoopEditor} from './LoopEditor';
+import { LoopEditor } from './LoopEditor';
+import { DrumLoop } from './drum_loop';
 
 function App() {
+
+    const [loop, setLoop] = useState(DrumLoop);
+
+    const handleClick = (event) => {
+
+    }
+
     return (
         <div className="App">
             <h1>It's a sequencer!</h1>
-            <LoopEditor />
-            <div>
-                <button>Play</button>
-                <button>Pause</button>
-            </div>
+            <LoopEditor drums={DrumLoop.drums}
+                length={DrumLoop.length} 
+                handleClick={handleClick}/>
+
         </div>
     );
 }

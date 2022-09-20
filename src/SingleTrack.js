@@ -1,43 +1,48 @@
-import React, {useState} from 'react';
-import {DrumLoop} from './drum_loop';
+import React, { useState } from 'react';
 import './SingleTrack.css'
 
 export const SingleTrack = (props) => {
-    const array = Array(props.loopLength).fill(false);
+    const array = Array(props.loopLength - 1).fill(false);
     for (let note of props.noteList) {
         array[note] = true;
     }
-    const [beats, setBeats] = useState(array);
 
     const onClick = (event) => {
-        let classList = event.target.classList;
+        props.handleClick(event);
+        /* let classList = event.target.classList;
         let isActive = classList.contains('active');
         if (isActive) {
             classList.remove('active');
         } else {
             classList.add('active');
-        }
+        } */
     }
-    
-    const beatDivs = beats.map((drum, i) => {
-        if (beats[i] === false) {
+
+    const beatDivs = array.map((beat, i) => {
+        if (beat === false) {
             return (
-                <div className='beat' 
-                     onClick={(event) => onClick(event)}
-                     key={i}></div>
+                <div className='beat'
+                    beatindex={i}
+                    instrumentindex={props.instrumentIndex}
+                    onClick={(event) => onClick(event)}
+                    key={i}></div>
             );
         } else {
             return (
-                <div className='beat active' 
-                     onClick={(event) => onClick(event)}
-                     key={i}></div>
+                <div className='beat active'
+                    beatindex={i}
+                    instrumentindex={props.instrumentIndex}
+                    onClick={(event) => onClick(event)}
+                    key={i}></div>
             );
         }
-        
+
     })
 
+    console.log(`Rerendering ${props.instrumentIndex}`);
+
     return (
-        <React.Fragment>
+        <React.Fragment key={props.passedkey}>
             <div className='instrument-name'>
                 <h3>{props.instrument}</h3>
             </div>
